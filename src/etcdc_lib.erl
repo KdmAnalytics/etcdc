@@ -13,6 +13,8 @@ call(Method, PortType, Path, Opts) ->
 
 call(Method, PortType, Path, Opts, Value) ->
     {Host, Port} = get_server_info(PortType),
+    erlang:display(Host),
+    erlang:display(Port),
     Timeout = get_timeout(Opts),
     Url = url(Host, Port, Path, proplists:unfold(Opts)),
     case lhttpc:request(Url, Method, [], Value, Timeout) of
